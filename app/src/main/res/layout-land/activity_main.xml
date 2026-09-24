@@ -1,12 +1,11 @@
-<!-- Part 2: ConstraintLayout with weights - Verified and completed -->
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
-    android:rotationX="-4">
+    android:background="#000000">
 
+    <!-- 横屏专属优化1：顶部标题栏，把 Lab 1 和 Responsive Layout 1 并排显示，充分利用宽度 -->
     <TextView
         android:id="@+id/tvLab1"
         android:layout_width="0dp"
@@ -14,13 +13,12 @@
         android:gravity="center"
         android:text="Lab 1"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/tvResponsive"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/colorRow"
+        app:layout_constraintEnd_toStartOf="@id/tvResponsive"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread"
-        app:layout_constraintVertical_weight="1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvResponsive"
@@ -30,13 +28,14 @@
         android:gravity="center"
         android:text="Responsive Layout 1"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/colorRow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvLab1"
-        app:layout_constraintVertical_weight="1.5" />
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toEndOf="@id/tvLab1"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- 中间的四个色块行 -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/colorRow"
         android:layout_width="0dp"
@@ -44,8 +43,8 @@
         app:layout_constraintBottom_toTopOf="@id/tvAndroidApplication"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvResponsive"
-        app:layout_constraintVertical_weight="1">
+        app:layout_constraintTop_toBottomOf="@id/tvLab1"
+        app:layout_constraintVertical_weight="1.5">
 
         <TextView
             android:id="@+id/tvThis"
@@ -55,7 +54,7 @@
             android:gravity="center"
             android:text="This"
             android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/tvIs"
             app:layout_constraintHorizontal_chainStyle="spread"
@@ -71,7 +70,7 @@
             android:gravity="center"
             android:text="is"
             android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/tvMy"
             app:layout_constraintHorizontal_weight="1"
@@ -86,7 +85,7 @@
             android:gravity="center"
             android:text="my"
             android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/tvFirst"
             app:layout_constraintHorizontal_weight="1"
@@ -101,7 +100,7 @@
             android:gravity="center"
             android:text="first"
             android:textColor="#000000"
-            android:textSize="16sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="1"
@@ -109,6 +108,7 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!-- 中间文字 -->
     <TextView
         android:id="@+id/tvAndroidApplication"
         android:layout_width="0dp"
@@ -116,13 +116,14 @@
         android:gravity="center"
         android:text="Android Application"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@id/buttonRow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/colorRow"
-        app:layout_constraintVertical_weight="3" />
+        app:layout_constraintVertical_weight="2" />
 
+    <!-- 底部按钮 -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/buttonRow"
         android:layout_width="0dp"
@@ -133,7 +134,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvAndroidApplication"
-        app:layout_constraintVertical_weight="1.5">
+        app:layout_constraintVertical_weight="1">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnChange"
